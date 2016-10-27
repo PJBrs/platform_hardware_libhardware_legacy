@@ -90,6 +90,14 @@ status_t AudioPolicyCompatClient::invalidateStream(AudioSystem::stream_type stre
     return mServiceOps->invalidate_stream(mService, (audio_stream_type_t)stream);
 }
 
+#ifdef MR0_AUDIO_BLOB
+status_t AudioPolicyCompatClient::setStreamOutput(AudioSystem::stream_type stream,
+                                             audio_io_handle_t output)
+{
+    return mServiceOps->invalidate_stream(mService, (audio_stream_type_t)stream);
+}
+#endif
+
 status_t AudioPolicyCompatClient::moveEffects(int session, audio_io_handle_t srcOutput,
                                                audio_io_handle_t dstOutput)
 {

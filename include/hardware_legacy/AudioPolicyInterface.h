@@ -232,6 +232,12 @@ public:
     // invalidate a stream type, causing a reroute to an unspecified new output
     virtual status_t invalidateStream(AudioSystem::stream_type stream) = 0;
 
+#ifdef MR0_AUDIO_BLOB
+    // FIXME ignores output, should be renamed to invalidateStreamOuput(stream)
+    // reroute a given stream type to the specified output
+    virtual status_t setStreamOutput(AudioSystem::stream_type stream, audio_io_handle_t output) = 0;
+#endif
+
     // function enabling to send proprietary informations directly from audio policy manager to audio hardware interface.
     virtual void setParameters(audio_io_handle_t ioHandle, const String8& keyValuePairs, int delayMs = 0) = 0;
     // function enabling to receive proprietary informations directly from audio hardware interface to audio policy manager.
